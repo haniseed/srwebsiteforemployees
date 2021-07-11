@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h1>Suggestions To Help Reduce Stress</h1>
+    <div class="methods">
+        {% for method in methods %}
+            <div class="method">
+                <h2>{{ method.name }}</h2>
+                <h2>{{ method.thumb }}</h2>
+                <p>{{ method.snippet }}</p>
+                # rating here
+                <p><a href="{% url 'methods:detail' slug=method.slug %}">
+                    <button type="button">Read More</button></a></p>
+            </div>
+        {% endfor %}
+        <p><a href="{% url 'methods:recommend' %}">
+            <input type="submit" value="Recommend">
+    </div>
+{% endblock %}

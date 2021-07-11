@@ -1,0 +1,36 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Suggestions To Help Reduce Stress</h1>
+<div class="row">
+    {% for method in methods %}
+    <div class="col">
+        <div class="card" id = 'card' style="width: 18rem;">
+            <div class ="imageDiv">
+                <img alt="..." class="card-img-top" src="{{ method.image.url }}" width="50%">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" style="color:red">{{ method.name }}</h5>
+                <p class="card-text">{{ method.snippet }}</p>
+                <span class="heading">
+                    How effective is this method for you?
+                </span>
+                <br>
+                <form action="" class="rate-form" id="{{method.id}}" method="POST">
+                    {% csrf_token %}
+                    <button  class="fa fa-star fa-2x star-btn" id="first"></button>
+                    <button  class="fa fa-star fa-2x star-btn" id="second"></button>
+                    <button  class="fa fa-star fa-2x star-btn" id="third"></button>
+                    <button  class="fa fa-star fa-2x star-btn" id="fourth"></button>
+                    <button  class="fa fa-star fa-2x star-btn" id="fifth"></button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'methods:recommend' %}" >
+        <button class="btn btn-primary mt-3" id="recommend-box">Recommend</button>
+</div>
+{% endblock %}

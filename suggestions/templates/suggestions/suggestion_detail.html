@@ -1,0 +1,11 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="suggestion-detail">
+    <div class="suggestion">
+        <img alt="" src="{{ suggestion.thumb.url }}">
+        <h2>{{ suggestion.name }}</h2>
+        <p>{{ suggestion.description }}</p>
+    </div>
+</div>
+{% endblock %}
